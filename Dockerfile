@@ -49,13 +49,7 @@ COPY CarlaStarsRosMapper/ros2_ws /app/ros2_ws
 RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
     && colcon build --merge-install --packages-select carla_stars_ros_mapper
 
-RUN if ["$ENABLED_FLAG_DEV_MODE" -eq "1"]; then \
-      apt-get install sudo; \
-      chmod -R 777 /app/; \
-      chown -R developer: /app/; \
-    fi
-
-RUN if ["$ENABLED_FLAG_DEV_MODE" -neq "1"]; then \
+RUN if [ "$ENABLED_FLAG_DEV_MODE" != "1" ]; then \
       rm -rf /app/ros2_ws && rm -rf /app/build; \
     fi
 
