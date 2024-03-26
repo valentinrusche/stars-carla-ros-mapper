@@ -1,4 +1,4 @@
-ARG ROS_DISTRO=foxy
+ARG ROS_DISTRO=humble
 FROM ros:${ROS_DISTRO}-ros-base
 
 ARG ROS_DISTRO
@@ -14,19 +14,7 @@ SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update -y && apt-get -y dist-upgrade && \
     apt-get install --no-install-recommends --fix-missing -y \
-    software-properties-common \
-    ros-${ROS_DISTRO}-test-msgs \
-    ros-${ROS_DISTRO}-derived-object-msgs \
-    ros-${ROS_DISTRO}-rosbag2 \
-    libgl1-mesa-glx \
-    ffmpeg \
-    libsm6 \
-    libxext6 \
-    wget \
     && rm -rf /var/lib/apt/lists/*
-RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && python3 -m pip install --upgrade pip
-COPY requirements.txt /app/requirements.txt
-RUN python3 -m pip install --ignore-installed -r requirements.txt
 
 # create a non root user group with GID 1000
 RUN groupadd -g ${GID} developer
