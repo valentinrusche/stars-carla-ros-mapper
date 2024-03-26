@@ -22,7 +22,6 @@ class CarlaDynamicInfoForwarder():
 
         self.all_actor_publisher = self.create_publisher(
             msg_type = StarsActorList, topic = f"/stars/dynamic/all_vehicle_actors",
-            callback = callback,
             qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
             callback_group = callback_group)
 

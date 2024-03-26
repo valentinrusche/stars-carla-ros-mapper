@@ -6,7 +6,7 @@ from stars_msgs.srv import StarsGetAllWaypoints
 from ..async_service_client import AsyncServiceClient
 
 
-class CarlaWaypointClient(AsyncServiceClient):
+class CarlaWaypointClientForwarder(AsyncServiceClient):
 
     def __init__(self, node_name: str, message_type, topic_name: str, callback_group, timeout_sec: float = 10.0) -> None:
         """Requests all generated waypoints by the Carla-ROS-Bridge waypoint publisher service asynchronously
