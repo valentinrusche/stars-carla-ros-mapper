@@ -36,8 +36,11 @@ RUN chown -R developer: /app/
 # build Carla message types as well as the stars message types
 RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
     && git clone --recurse-submodules ${CARLA_ROS_BRIDGE_REPO} \
+    && colcon build --merge-install --packages-select carla_msgs carla_waypoint_types carla_actor_state_types
+
+RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
     && git clone ${STARS_MESSAGES_REPO} \
-    && colcon build --merge-install --packages-select carla_msgs carla_waypoint_types carla_actor_state_types stars_ros_msgs
+    && colcon build --merge-install --packages-select stars_msgs
 
 # Copy carla_stars_bridge to the container
 COPY CarlaStarsRosMapper/ros2_ws /app/ros2_ws

@@ -7,9 +7,6 @@ setup(
     version='1.0.0',
     packages=[
         package_name,
-        package_name + "/stars",
-        package_name + "/util",
-        package_name + "/xodr",
         package_name + "/nodes",
         package_name + "/nodes/carla_implementations"
     ],
