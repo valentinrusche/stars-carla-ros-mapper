@@ -1,0 +1,9 @@
+lanelet2==1.2.1
+commonroad-scenario-designer==0.7.0
+commonroad-drivability-checker==2022.2.1
+orjson==3.9.1
+pybind11[global]==2.10.4
+xmltodict==0.13.0
+dacite==1.8.1
+xml-dataclasses==0.0.9
+shapely==2.0.3
