@@ -18,7 +18,7 @@ class CarlaStaticMapDataForwarder(Node):
     def __init__(self, node_name: str, polling_rate: int, callback_group) -> None:
         """Creates a ROS2 topic subscription listening for the current map data and calling _write_static_data_to_file
             to write it to disk"""
-        super().__init__(node_name=node_name, parameter_overrides=[])
+        super().__init__(node_name)
 
         callback: Callable[[CarlaWorldInfo], None] = lambda world_info: self.__republish_world_info(world_info=world_info)
         self.create_subscription(

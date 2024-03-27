@@ -14,7 +14,7 @@ class AsyncServiceClient(Node):
 
     def __init__(self, node_name: str, message_type, topic_name: str, callback_group, timeout_sec: float = 10.0) -> None:
         # Create a client
-        super().__init__(node_name=node_name, parameter_overrides=[])
+        super().__init__(node_name)
         self.timeout: float = timeout_sec
         self.client: Client = self.create_client(srv_type=message_type, srv_name=topic_name, callback_group=callback_group)
 

@@ -13,7 +13,7 @@ from stars_msgs.msg import StarsSimulationStatus
 class CarlaGeneralInfoForwarder():
 
     def __init__(self, node_name: str, callback_group) -> None:
-        super().__init__(node_name=node_name, parameter_overrides=[])
+        super().__init__(node_name)
 
         status_callback: Callable[[CarlaStatus], None] = lambda msg: self.__handle_status(msg = msg)
 
