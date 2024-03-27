@@ -35,7 +35,7 @@ class CarlaActorStateForwarder(AsyncServiceClient):
         self.actor_list: List[CarlaActorList] = []
 
         # initialize ros service
-        self.get_state_service = self.create_service(
+        self.get_state_service = self.create_subscription(
             StarsGetActorState,
             '/stars/dynamic/get_actor_state',
             self.get_actor_state)
@@ -50,10 +50,9 @@ class CarlaActorStateForwarder(AsyncServiceClient):
             self.carla_status_updated,
             qos_profile=10)
 
-
         actor_callback: Callable[[CarlaActorList], None] = lambda list: self.__handle_actors(actors = list.actors)
 
-        self.create_subscription(
+        self.all_actor_subscriber = self.create_subscription(
             msg_type = CarlaActorList, topic = f"/carla/all_vehicle_actors",
             callback = actor_callback,
             qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
