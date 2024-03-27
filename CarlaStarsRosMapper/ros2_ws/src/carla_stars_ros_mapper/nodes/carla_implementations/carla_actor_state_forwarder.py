@@ -41,7 +41,7 @@ class CarlaActorStateForwarder(AsyncServiceClient):
             self.get_actor_state)
 
         # use callback to wait for ego vehicle
-        self.loginfo("Waiting for ego vehicle...")
+        self.get_logger().info("Waiting for ego vehicle...")
 
         self.carla_status = CarlaStatus()
         self.status_subscriber = self.new_subscription(
