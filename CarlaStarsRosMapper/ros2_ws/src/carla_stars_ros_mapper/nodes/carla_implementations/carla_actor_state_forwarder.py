@@ -44,7 +44,7 @@ class CarlaActorStateForwarder(AsyncServiceClient):
         self.get_logger().info("Waiting for ego vehicle...")
 
         self.carla_status = CarlaStatus()
-        self.status_subscriber = self.new_subscription(
+        self.status_subscriber = self.create_subscription(
             StarsSimulationStatus,
             "/stars/general/simulation_status",
             self.carla_status_updated,
