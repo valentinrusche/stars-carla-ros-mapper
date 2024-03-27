@@ -64,7 +64,7 @@ class CarlaActorStateForwarder(AsyncServiceClient):
             qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
             callback_group = callback_group)
 
-        self.get_state_service = self.new_service(
+        self.get_state_service = self.create_service(
             GetStarsActorState,
             '/stars/dynamic/get_actor_state',
             self.get_actor_state)

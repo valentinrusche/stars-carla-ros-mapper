@@ -19,7 +19,7 @@ class CarlaWaypointClientForwarder(AsyncServiceClient):
             and publishes them to the system when they are available"""
         super().__init__(node_name=node_name, message_type=message_type, topic_name=topic_name, callback_group=callback_group, timeout_sec=timeout_sec)
 
-        self.get_all_waypoints_service = self.new_service(
+        self.get_all_waypoints_service = self.create_service(
             StarsGetAllWaypoints,
             '/stars/static/waypoints/get_all_waypoints',
             self.get_map_waypoints)
