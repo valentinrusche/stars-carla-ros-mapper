@@ -28,14 +28,14 @@ def main() -> None:
     callback_group: ReentrantCallbackGroup = ReentrantCallbackGroup() # allows for the concurrent execution of nodes
 
     try:
-        node_executor: Union[MultiThreadedExecutor,None] = MultiThreadedExecutor(num_threads=5) # needed to allow multiple nodes to be run inside ROS2
+        node_executor: Union[MultiThreadedExecutor, None] = MultiThreadedExecutor(num_threads=5) # needed to allow multiple nodes to be run inside ROS2
 
         carla_static_map_forwarder: Union[CarlaStaticMapDataForwarder, None] = CarlaStaticMapDataForwarder(node_name = 'Carla_Static_Map_Data_Forwarder', polling_rate = 10,
                                                                             callback_group = callback_group)
         node_executor.add_node(node=carla_static_map_forwarder)
 
         carla_general_data_forwarder: Union[CarlaGeneralInfoForwarder, None] = CarlaGeneralInfoForwarder(node_name = 'Carla_General_Data_Forwarder',
-                                                                callback_group = callback_group)
+                                                                                                         callback_group = callback_group)
         node_executor.add_node(node=carla_general_data_forwarder)
 
         carla_actor_state_forwarder: Union[CarlaActorStateForwarder, None] = CarlaActorStateForwarder(node_name = 'Carla_Actor_State_Forwarder',

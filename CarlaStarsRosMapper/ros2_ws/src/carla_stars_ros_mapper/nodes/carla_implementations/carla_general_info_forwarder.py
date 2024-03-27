@@ -5,12 +5,13 @@
 # This work is licensed under the terms of the MIT license.
 # For a copy, see <https://opensource.org/licenses/MIT>.
 from typing import Callable
+from rclpy.node import Node
 from rclpy.qos import DurabilityPolicy, ReliabilityPolicy, QoSProfile
 from carla_msgs.msg import CarlaStatus
 from stars_msgs.msg import StarsSimulationStatus
 
 
-class CarlaGeneralInfoForwarder():
+class CarlaGeneralInfoForwarder(Node):
 
     def __init__(self, node_name: str, callback_group) -> None:
         super().__init__(node_name)
