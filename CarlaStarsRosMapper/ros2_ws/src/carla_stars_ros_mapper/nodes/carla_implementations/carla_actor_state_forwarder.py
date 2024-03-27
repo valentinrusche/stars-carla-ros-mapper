@@ -35,7 +35,7 @@ class CarlaActorStateForwarder(AsyncServiceClient):
         self.actor_list: List[CarlaActorList] = []
 
         # initialize ros service
-        self.get_state_service = self.new_service(
+        self.get_state_service = self.create_service(
             StarsGetActorState,
             '/stars/dynamic/get_actor_state',
             self.get_actor_state)
