@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+#
+# Copyright (c) 2024 Valentin Rusche
+#
+# This work is licensed under the terms of the MIT license.
+# For a copy, see <https://opensource.org/licenses/MIT>.
 from typing import List, Union
 
 from carla_waypoint_types.msg import CarlaWaypoint
