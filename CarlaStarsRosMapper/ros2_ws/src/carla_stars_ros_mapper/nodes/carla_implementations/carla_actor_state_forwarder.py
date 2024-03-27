@@ -14,7 +14,7 @@ from rclpy.qos import DurabilityPolicy, ReliabilityPolicy, QoSProfile
 
 from carla_msgs.msg import CarlaStatus, CarlaActorList
 
-from stars_msgs.msg import StarsActorList, StarsActorInfo, StarsActorState
+from stars_msgs.msg import StarsActorList, StarsActorInfo, StarsActorState, StarsSimulationStatus, StarsWaypoint
 
 
 class CarlaActorStateForwarder(AsyncServiceClient):
