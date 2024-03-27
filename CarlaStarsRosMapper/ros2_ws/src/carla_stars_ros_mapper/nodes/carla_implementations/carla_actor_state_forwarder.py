@@ -69,6 +69,8 @@ class CarlaActorStateForwarder(AsyncServiceClient):
             '/stars/dynamic/get_actor_state',
             self.get_actor_state)
 
+        self.get_logger().info(message=f"Successfully created. Starting forwarding of actor state data.")
+
     def destroy(self) -> None:
         """
         Destructor

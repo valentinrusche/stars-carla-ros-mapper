@@ -28,6 +28,8 @@ class CarlaGeneralInfoForwarder():
             qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
             callback_group = callback_group)
 
+        self.get_logger().info(message=f"Successfully created. Starting forwarding of general simulation info.")
+
 
     def destroy_node(self) -> None:
         super().destroy_node()

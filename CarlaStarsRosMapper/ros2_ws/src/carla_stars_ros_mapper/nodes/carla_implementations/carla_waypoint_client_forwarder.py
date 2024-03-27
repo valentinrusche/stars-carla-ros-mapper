@@ -24,6 +24,8 @@ class CarlaWaypointClientForwarder(AsyncServiceClient):
             '/stars/static/waypoints/get_all_waypoints',
             self.get_map_waypoints)
 
+        self.get_logger().info(message=f"Successfully created. Starting forwarding of waypoints.")
+
     def get_map_waypoints(self, req=None, response=None):
         """
         Get all waypoints for the current map
@@ -45,6 +47,6 @@ class CarlaWaypointClientForwarder(AsyncServiceClient):
                 stars_waypoint.pose = waypoint.pose
 
                 self.stars_waypoints.append(stars_waypoint)
-        response = GetAllWaypoints()
+        response = StarsGetAllWaypoints()
         response.waypoints.waypoints = self.stars_waypoints
         return response
