@@ -15,7 +15,6 @@ from rclpy.qos import DurabilityPolicy, ReliabilityPolicy, QoSProfile
 from carla_msgs.msg import CarlaStatus, CarlaActorList
 
 from stars_msgs.msg import StarsActorList, StarsActorInfo, StarsActorState
-from stars_msgs.srv import StarsGetActorState
 
 
 class CarlaActorStateForwarder(AsyncServiceClient):
@@ -36,7 +35,7 @@ class CarlaActorStateForwarder(AsyncServiceClient):
 
         # initialize ros service
         self.get_state_service = self.create_subscription(
-            StarsGetActorState,
+            StarsActorState,
             '/stars/dynamic/get_actor_state',
             self.get_actor_state,
             qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
