@@ -38,7 +38,9 @@ class CarlaActorStateForwarder(AsyncServiceClient):
         self.get_state_service = self.create_subscription(
             StarsGetActorState,
             '/stars/dynamic/get_actor_state',
-            self.get_actor_state)
+            self.get_actor_state,
+            qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
+            callback_group = callback_group)
 
         # use callback to wait for ego vehicle
         self.get_logger().info("Waiting for ego vehicle...")
@@ -48,7 +50,8 @@ class CarlaActorStateForwarder(AsyncServiceClient):
             StarsSimulationStatus,
             "/stars/general/simulation_status",
             self.carla_status_updated,
-            qos_profile=10)
+            qos_profile = QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE, durability = DurabilityPolicy.TRANSIENT_LOCAL),
+            callback_group = callback_group)
 
         actor_callback: Callable[[CarlaActorList], None] = lambda list: self.__handle_actors(actors = list.actors)
 
