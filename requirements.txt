@@ -1,0 +1,2 @@
+orjson==3.9.1
+shapely==2.0.3
